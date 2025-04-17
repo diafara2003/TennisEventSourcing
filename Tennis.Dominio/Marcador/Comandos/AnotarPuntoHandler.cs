@@ -1,5 +1,4 @@
-﻿
-namespace Tennis.Dominio.Marcador.Comandos;
+﻿namespace Tennis.Dominio.Marcador.Comandos;
 
 public record SumarPunto(Guid IdMarcador, string jugador);
 public class AnotarPuntoHandler(IEventStore eventStore) : ICommandHandler<SumarPunto>

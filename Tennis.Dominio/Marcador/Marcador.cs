@@ -1,6 +1,4 @@
-﻿
-
-namespace Tennis.Dominio.Marcador;
+﻿namespace Tennis.Dominio.Marcador;
 
 public class Marcador : AggegateRoot
 {

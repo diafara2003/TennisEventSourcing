@@ -1,5 +1,4 @@
-﻿using Tennis.Dominio.Marcador;
-using FluentAssertions;
+﻿using FluentAssertions;
 
 namespace Tennis.Dominio.Test;
 

@@ -5,7 +5,22 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\Tennis.Dominio.Test</DockerfileContext>
+    <UserSecretsId>99585b18-96c8-4308-a852-13ad98cba2a4</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="9.0.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="9.0.0" />
+    <PackageReference Include="Carter" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+    <PackageReference Include="WolverineFx" Version="3.12.1" />
+    <PackageReference Include="WolverineFx.Marten" Version="3.12.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tennis.Dominio\Tennis.Dominio.csproj" />
+    <ProjectReference Include="..\Tennis.EventStore\Tennis.EventStore.csproj" />
+  </ItemGroup>
 
 </Project>

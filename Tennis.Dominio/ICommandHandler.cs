@@ -1,6 +1,4 @@
-﻿
-
-namespace Tennis.Dominio.Marcador;
+﻿namespace Tennis.Dominio;
 
 public interface ICommandHandler<Tcommand>
 {

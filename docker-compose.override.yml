@@ -1,0 +1,20 @@
+services:
+  tennisdatabase:
+    container_name: tennisdatabase
+    restart: always
+    environment:
+      POSTGRES_USER: TennisUser
+      POSTGRES_PASSWORD: TennisPassword
+      POSTGRES_DB: TennisDb
+    ports:
+      - "5432:5432"
+  tennis.api:    
+    container_name: bankaccountapi
+    restart: always
+    ports:
+      - "8080:8080"      
+    depends_on:
+      - tennisdatabase
+    environment:
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ConnectionStrings__TenisEventStore=Host=bankaccountdatabase;Port=5432;Database=TennisDb;Username=TennisUser;Password=TennisPassword

@@ -1,0 +1,12 @@
+services:
+  tennisdatabase:
+    image: postgres:latest    
+    volumes:
+      - tennisdatabaseDB:/var/lib/postgresql/data
+  tennis.api:
+    image: ${DOCKER_REGISTRY-}tennisapi
+    build:
+      context: .
+      dockerfile: Tennis.API/Dockerfile
+volumes:
+  tennisdatabaseDB:

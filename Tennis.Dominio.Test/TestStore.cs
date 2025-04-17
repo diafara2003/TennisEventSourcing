@@ -1,5 +1,4 @@
-﻿
-namespace Tennis.Dominio.Test;
+﻿namespace Tennis.Dominio.Test;
 
 public class TestStore : IEventStore
 {

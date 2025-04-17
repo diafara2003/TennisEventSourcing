@@ -1,5 +1,4 @@
-﻿
-namespace Tennis.Dominio.Test.Marcador;
+﻿namespace Tennis.Dominio.Test.Marcador;
 
 public class CrearMarcadorSpecifications : CommandHandlerTest<CrearMarcador>
 {

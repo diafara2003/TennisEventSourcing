@@ -1,5 +1,4 @@
-﻿
-namespace Tennis.Dominio.Marcador.Comandos;
+﻿namespace Tennis.Dominio.Marcador.Comandos;
 
 public record CrearMarcador(Guid IdMarcador,string puntaje);
 public class CrearMarcadorHandler(IEventStore eventStore) : ICommandHandler<CrearMarcador>
