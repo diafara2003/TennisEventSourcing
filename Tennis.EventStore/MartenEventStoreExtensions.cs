@@ -9,11 +9,13 @@ namespace Tennis.EventStore;
 
 public static class MartenEventStoreExtensions
 {
-    public static MartenServiceCollectionExtensions.MartenConfigurationExpression AddMartenConfiguration(this IServiceCollection services, IConfiguration configuration)
+    public static MartenServiceCollectionExtensions.MartenConfigurationExpression AddMartenConfiguration(this IServiceCollection services, 
+        string connectionString
+        )
     {
      return   services.AddMarten(options =>
         {
-            options.Connection(configuration.GetConnectionString("TenisEventStore")!);
+            options.Connection(connectionString);
             options.UseSystemTextJsonForSerialization();
             options.Events.StreamIdentity = StreamIdentity.AsGuid;
             options.AutoCreateSchemaObjects = AutoCreate.All;

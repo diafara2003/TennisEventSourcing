@@ -2,5 +2,5 @@
 
 public interface ICommandHandler<Tcommand>
 {
-    Task Handler(Tcommand command);
+    Task Handle(Tcommand command);
 }

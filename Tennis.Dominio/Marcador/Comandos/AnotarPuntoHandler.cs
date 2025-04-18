@@ -3,7 +3,7 @@
 public record SumarPunto(Guid IdMarcador, string jugador);
 public class AnotarPuntoHandler(IEventStore eventStore) : ICommandHandler<SumarPunto>
 {
-    public async Task Handler(SumarPunto command)
+    public async Task Handle(SumarPunto command)
     {
         var marcador = await eventStore.GetAggregateRoot<Marcador>(command.IdMarcador);
 

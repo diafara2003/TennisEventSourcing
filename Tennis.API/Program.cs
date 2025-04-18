@@ -3,6 +3,8 @@ using Tennis.EventStore;
 using Tennis.Dominio;
 using Wolverine.Marten;
 using Tennis.API;
+using Tennis.API.Marcador;
+using Tennis.Dominio.Marcador.Comandos;
 
 var builder = WebApplication.CreateBuilder(args);
 var isDevelopment = builder.Environment.IsDevelopment();
@@ -18,10 +20,11 @@ builder.Services
 
 builder.UseWolverine(options =>
 {
-    options.Discovery.IncludeAssembly(typeof(IEventStore).Assembly);
-    options.Services.AddMartenConfiguration(builder.Configuration).IntegrateWithWolverine();
+    options.Discovery.IncludeAssembly(typeof(Tennis.Dominio.IEventStore).Assembly);
+    options.Services.AddMartenConfiguration(martenConnectionString).IntegrateWithWolverine();
     options.Policies.AutoApplyTransactions();
     options.Durability.Mode = DurabilityMode.MediatorOnly;
+
 }
 );
 
@@ -37,7 +40,9 @@ if (isDevelopment)
 }
 app.UseHealthChecks("/health");
 
-app.UseHttpsRedirection();
+app.MarcadorEndpoints();
+
+//app.UseHttpsRedirection();
 
 
 app.Run();
