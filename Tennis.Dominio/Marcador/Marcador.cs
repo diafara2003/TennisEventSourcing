@@ -17,22 +17,35 @@ public class Marcador : AggegateRoot
     }
     private string CalcularPuntaje()
     {
-        if (PuntajeJugador1 == 0 && PuntajeJugador2 == 0) return "Love";
-        if (PuntajeJugador1 >= 3 && PuntajeJugador2 >= 3 && PuntajeJugador1 == PuntajeJugador2) return "Deuce";
+        if (EsLove()) return "Love";
+        if (EsDeuce()) return "Deuce";
 
-        int diferenciaPuntaje = Math.Abs(PuntajeJugador1 - PuntajeJugador2);
-
-        if ((PuntajeJugador1 >= 4 || PuntajeJugador2 >= 4) && diferenciaPuntaje == 1)
+        if (EsVentaja())
         {
-            return PuntajeJugador1 > PuntajeJugador2 ? "Advantage-Jugador1" : "Advantage-Jugador2";
-        }
-
-        if ((PuntajeJugador1 >= 4 || PuntajeJugador2 >= 4) && diferenciaPuntaje >= 2)
-        {
-            return PuntajeJugador1 > PuntajeJugador2 ? "Game-Jugador1" : "Game-Jugador2";
+            return EsVentajaOJuego();
         }
 
         return $"{PuntajeJugador1.ConvertirPuntoToMarcador()}-{PuntajeJugador2.ConvertirPuntoToMarcador()}";
+    }
+
+    private bool EsLove() => PuntajeJugador1 == 0 && PuntajeJugador2 == 0;
+    private bool EsDeuce() => PuntajeJugador1 >= 3 && PuntajeJugador2 >= 3 && PuntajeJugador1 == PuntajeJugador2;
+    private bool EsVentaja() => (PuntajeJugador1 >= 4 || PuntajeJugador2 >= 4);
+
+
+    private string EsVentajaOJuego()
+    {
+        string resultado = "";
+        int diferenciaPuntaje = Math.Abs(PuntajeJugador1 - PuntajeJugador2);
+
+        if (diferenciaPuntaje == 1)
+            resultado = PuntajeJugador1 > PuntajeJugador2 ? "Advantage-Jugador1" : "Advantage-Jugador2";
+
+        if (diferenciaPuntaje >= 2)
+            resultado = PuntajeJugador1 > PuntajeJugador2 ? "Game-Jugador1" : "Game-Jugador2";
+
+
+        return resultado;
     }
 
     public bool MarcadorTerminado()

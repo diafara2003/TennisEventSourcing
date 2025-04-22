@@ -15,7 +15,7 @@ public abstract class CommandHandlerTest<Tcommand>()
         => eventStore.AppendPreviousEvent(_aggregateId, events);
 
     protected void When(Tcommand command)
-        => Handler.Handler(command)
+        => Handler.Handle(command)
         .GetAwaiter()
         .GetResult();
 
